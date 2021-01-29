@@ -1,0 +1,9 @@
+package com.mecury.final_project_server.dao;
+
+import com.mecury.final_project_server.bean.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserDao extends JpaRepository<User, Long> {
+
+    User findByUsername(String username);
+}
