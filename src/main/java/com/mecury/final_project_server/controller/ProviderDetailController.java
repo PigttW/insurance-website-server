@@ -19,12 +19,6 @@ public class ProviderDetailController {
         return providerDetailService.getProviderDetails();
     }
 
-    @GetMapping("/all")
-    public List<ProviderDetail> getAllProviderDetails() {
-        return providerDetailService.getProviderDetails();
-    }
-
-
     @GetMapping("/{id}")
     public ProviderDetail getProviderDetailById(@PathVariable(name = "id") long id) {
         return providerDetailService.getProviderDetailById(id);

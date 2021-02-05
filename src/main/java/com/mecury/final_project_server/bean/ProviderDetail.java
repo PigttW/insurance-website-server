@@ -3,6 +3,7 @@ package com.mecury.final_project_server.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,8 @@ public class ProviderDetail {
     @ManyToOne
     @JoinColumn(name = "SPECIALTY_ID", referencedColumnName = "ID")
     Specialty specialty;
-
+    @Column
+    Boolean verified;
 
     public ProviderDetail() {
     }
@@ -137,5 +139,44 @@ public class ProviderDetail {
 
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProviderDetail that = (ProviderDetail) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ProviderDetail{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", user=" + user +
+                ", specialty=" + specialty +
+                '}';
     }
 }

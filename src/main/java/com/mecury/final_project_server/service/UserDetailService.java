@@ -5,6 +5,7 @@ import com.mecury.final_project_server.bean.UserDetail;
 import com.mecury.final_project_server.dao.UserDetailDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.annotation.Rollback;
 
 import javax.transaction.Transactional;
 
@@ -35,6 +36,24 @@ public class UserDetailService {
                 existUserDetail.setMyHealthTeam(userDetail.getMyHealthTeam());
                 existUserDetail.setInsurance(userDetail.getInsurance());
                 userDetailDao.save(existUserDetail);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Transactional
+    @Rollback(value = false)
+    public boolean deleteProviderFromHealthTeam(long id, ProviderDetail providerDetail) {
+        if (userDetailDao.existsById(id)) {
+            try {
+                UserDetail detail = userDetailDao.getOne(id);
+                detail.removeDetailProviderFromMyHealthTeam(providerDetail);
+                userDetailDao.saveAndFlush(detail);
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();

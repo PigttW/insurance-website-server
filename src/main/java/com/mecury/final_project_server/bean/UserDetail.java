@@ -47,6 +47,9 @@ public class UserDetail {
     )
     Set<ProviderDetail> myHealthTeam;
 
+    public UserDetail() {
+    }
+
     public Insurance getInsurance() {
         return insurance;
     }
@@ -63,8 +66,6 @@ public class UserDetail {
         this.myHealthTeam = myHealthTeam;
     }
 
-    public UserDetail() {
-    }
 
     public long getId() {
         return id;
@@ -152,5 +153,9 @@ public class UserDetail {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void removeDetailProviderFromMyHealthTeam(ProviderDetail providerDetail) {
+        this.myHealthTeam.remove(providerDetail);
     }
 }

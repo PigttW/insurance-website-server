@@ -29,4 +29,8 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    @PostMapping("/provider")
+    public boolean postProvider(@RequestBody User user) {
+        return userService.addProvider(user);
+    }
 }

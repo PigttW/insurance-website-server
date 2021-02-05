@@ -15,7 +15,7 @@ public class ProviderDetailService {
     ProviderDetailDao providerDetailDao;
 
     public ProviderDetail getProviderDetailById(long id) {
-        return providerDetailDao.findById(id).orElse(new ProviderDetail());
+        return providerDetailDao.findByUserId(id);
     }
 
     public List<ProviderDetail> getProviderDetails() {
@@ -36,6 +36,8 @@ public class ProviderDetailService {
                 existProviderDetail.setCity(providerDetail.getCity());
                 existProviderDetail.setState(providerDetail.getState());
                 existProviderDetail.setZip(providerDetail.getZip());
+                existProviderDetail.setSpecialty(providerDetail.getSpecialty());
+                existProviderDetail.setVerified(providerDetail.getVerified());
                 providerDetailDao.save(existProviderDetail);
                 return true;
             } catch (Exception e) {

@@ -3,16 +3,15 @@ package com.mecury.final_project_server.bean;
 import org.hibernate.service.spi.InjectService;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "INSURANCE")
 public class Insurance {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "isg")
+    @SequenceGenerator(name = "isg", sequenceName = "INSURANCE_SEQ", allocationSize = 1)
     private long id;
     @Column
     private String type;
