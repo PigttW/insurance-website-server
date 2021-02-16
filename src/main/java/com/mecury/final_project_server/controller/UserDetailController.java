@@ -5,7 +5,6 @@ import com.mecury.final_project_server.bean.UserDetail;
 import com.mecury.final_project_server.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.tools.jconsole.JConsole;
 
 @RestController
 @RequestMapping("/user-detail")
